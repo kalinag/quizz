@@ -1,11 +1,12 @@
 import React from 'react'
-import { useGlobalContext } from './context'
+import { useGlobalContext } from '../context'
+import './setupForm.styles.css'
 
 const SetupForm = () => {
   const{setup, handleChange, handleSubmit,error} = useGlobalContext()
   return (
   <main>
-    <section className="quiz quiz-small">
+    <section className="quiz">
       <form className="setup-form">
         <h2>Setup Quiz</h2>
         <div className="form-control">

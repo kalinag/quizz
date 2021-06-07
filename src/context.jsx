@@ -19,7 +19,7 @@ const AppProvider = ({ children }) => {
   const [index, setIndex] = useState(0)
   const [correct,setCorrect] = useState(0)
   const [error,setError] = useState(false)
-  const [isModalOpen,setIsModalOpen] = useState(false)
+  const [isMessageOpen,setIsMessageOpen] = useState(false)
   const [setup, setSetup] = useState({
     amount:10,
     category:'animals',
@@ -54,7 +54,7 @@ const AppProvider = ({ children }) => {
     setIndex((oldIndex)=> {
       const index = oldIndex +1
       if (index>questions.length -1) {
-        openModal()
+        openMessage()
         return 0
       }
       return index
@@ -69,14 +69,14 @@ const AppProvider = ({ children }) => {
     nextQ()
   }
 
-  const openModal = () => {
-    setIsModalOpen(true)
+  const openMessage = () => {
+    setIsMessageOpen(true)
   }
 
-  const closeModal =()=> {
+  const closeMessage =()=> {
     setWaiting(true)
     setCorrect(0)
-    setIsModalOpen(false)
+    setIsMessageOpen(false)
   }
 
   const handleChange = (e)=> {
@@ -95,7 +95,7 @@ const AppProvider = ({ children }) => {
   }
 
 
-  return <AppContext.Provider value={{waiting,loading,questions,index,correct,error,isModalOpen, nextQ, checkAnswer,closeModal,setup,handleChange,handleSubmit}}>{children}</AppContext.Provider>
+  return <AppContext.Provider value={{waiting,loading,questions,index,correct,error,isMessageOpen, nextQ, checkAnswer,closeMessage,setup,handleChange,handleSubmit}}>{children}</AppContext.Provider>
 }
 
 export const useGlobalContext = () => {
